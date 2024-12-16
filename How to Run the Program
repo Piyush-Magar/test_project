@@ -1,0 +1,115 @@
+How to Run the Program
+This guide will walk you through the steps required to set up the project, run the program, and execute tests locally.
+
+Prerequisites
+Before you begin, ensure that you have the following installed:
+
+Node.js: Download and install Node.js (version 16 or higher).
+npm: npm is bundled with Node.js. You can verify the installation by running:
+bash
+Copy code
+npm --version
+Step 1: Clone the Repository
+If you haven't already cloned the repository to your local machine, do so with the following commands:
+
+Clone the repository:
+
+bash
+Copy code
+gh repo clone <your-username>/<repository-name>
+Navigate into the project directory:
+
+bash
+Copy code
+cd <repository-name>
+Step 2: Install Dependencies
+Once you have the project on your local machine, you need to install the required dependencies.
+
+Open your terminal and navigate to the project directory if you haven’t already.
+Run the following command to install the dependencies:
+bash
+Copy code
+npm install
+This will install Jest and any other dependencies listed in your package.json file.
+
+Step 3: Run the Program
+If you want to run the project (e.g., running the tests or any other code), follow these steps:
+
+Running Jest Tests Locally
+To run Jest tests locally:
+
+Run the following command in your terminal:
+
+bash
+Copy code
+npm test
+This will trigger Jest to run all the tests in the __tests__ folder.
+
+Expected Output (if tests pass):
+
+bash
+Copy code
+> test_project@1.0.0 test /path/to/project
+> jest
+
+PASS  __tests__/example.test.js
+  ✓ adds 1 + 2 to equal 3 (X ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        Xs
+If a test fails, you will see an error similar to the following:
+
+bash
+Copy code
+> test_project@1.0.0 test /path/to/project
+> jest
+
+FAIL  __tests__/example.test.js
+  ● Test suite failed to run
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 3
+    Received: 2
+
+    at Object.<anonymous> (__tests__/example.test.js:2:19)
+
+Test Suites: 1 failed, 1 total
+Tests:       0 passed, 1 failed
+Snapshots:   0 total
+Time:        Xs
+Step 4: Run the Program in GitHub Actions (CI)
+GitHub Actions Workflow
+If you have set up GitHub Actions for CI/CD, every time you push your code to the main branch, the Jest tests will automatically run.
+
+Push your changes to the repository:
+
+bash
+Copy code
+git add .
+git commit -m "Add or update test"
+git push origin main
+GitHub Actions will automatically trigger the workflow.
+
+To view the status and logs of the workflow:
+
+Navigate to the Actions tab on your GitHub repository.
+You will see a list of workflow runs and their statuses (success or failure).
+Click on the most recent run to view detailed logs for each step in the workflow.
+Troubleshooting
+Jest not found: If you get an error saying Jest is not installed, make sure you’ve run npm install to install all dependencies.
+
+Tests failing: If the tests are failing, open the logs (either locally or in the Actions tab on GitHub) to identify the error and fix it.
+
+Running tests on specific files: To run tests on specific files, use the following command:
+
+bash
+Copy code
+npx jest <file-name>
+For example, to run example.test.js, use:
+
+bash
+Copy code
+npx jest __tests__/example.test.js
